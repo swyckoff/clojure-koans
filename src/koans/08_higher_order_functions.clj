@@ -6,16 +6,16 @@
   (= [1 4 9 16 25] (map (fn [x] (* x x)) [1 2 3 4 5]))
 
   "Or use the names of existing functions"
-  (= [ false false true false false] (map nil? [:a :b nil :c :d]))
+  (= [false false true false false] (map nil? [:a :b nil :c :d]))
 
-  ;"A filter can be strong"
-  ;(=  (filter (fn [x] false) '(:anything :goes :here)))
+  "A filter can be strong"
+  (= '() (filter (fn [x] false) '(:anything :goes :here)))
 
-;  "Or very weak"
-;  (=  (filter (fn [x] true) '(:anything :goes :here)))
+  "Or very weak"
+  (= '(:anything :goes :here) (filter (fn [x] true) '(:anything :goes :here)))
 
   "Or somewhere in between"
-  (= [10 20 30] (filter (fn [x] (< x 31)) [10 20 30 40 50 60 70 80]))
+  (= [10 20 30] (filter (fn [x] (<= x 30)) [10 20 30 40 50 60 70 80]))
 
   "Maps and filters may be combined"
   (= [10 20 30] (map (fn [x] (* x 10)) (filter (fn [x] (< x 4)) [1 2 3 4 5 6 7 8])))
